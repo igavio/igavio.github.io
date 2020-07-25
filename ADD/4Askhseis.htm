@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Ασκήσεις μαθήματος 'Αλγόριθμοι, Δομές Δεδομένων'</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-7">
+</head>
+<link href="ADD.css" rel="stylesheet" type="text/css">
+<body>
+<p><strong>Ασκήσεις: <a href="#">1</a> <a href="#A2">2</a> <a href="#A3">3</a> 
+  <a href="#A4">4</a> <a href="#AM">M</a><em><font color="#660066"> - </font></em></strong><strong><em><font color="#660066">ΜΗΝ 
+  ΑΝΤΙΓΡΑΨΕΤΕ</font></em></strong><font color="#660066"><em> - Κινδυνεύετε να 
+  χάσετε όλο το μάθημα- Διαβάστε <a href="../Collabor.htm">Οδηγίες και Ποινές</a></em></font></p>
+<p>Δείτε <a href="../AskLog.htm">οδηγίες για υποβολή ασκήσεων που περιλαμβάνουν 
+  λογισμικό</a>.</p>
+<p><strong><a name="A1"></a>Άσκηση 1<sup>η</sup> </strong>- Μετράει για 25% του 
+  τελικού βαθμού - παραδοτέα μέχρι 18/11/2007 </p>
+<p>Γράψτε πρόγραμμα που να λύνει παζλ <strong>Sudoku</strong>. Για πληροφορίες 
+  περί του παιχνιδιού Sudoku και μεθόδους επίλυσής του, δείτε στη <a href="http://en.wikipedia.org/wiki/Sudoku">Βικιπαίδεια</a>. 
+  Το πρόγραμμά σας θα παίρνει ως είσοδο παζλ με κενά και θα τερματίζει με έναν 
+  από τρεις τρόπους: ανακοινώνοντας τη (μία και μοναδική) λύση, ή δηλώνοντας ότι 
+  δεν υπάρχει καμιά λύση ή ότι υπάρχουν περισσότερες από μία. Σε μια σύντομη αναφορά 
+  με τη μορφή εκτεταμένου σχολίου στον κώδικα θα εξηγήσετε τον αλγόριθμο που χρησιμοποιείτε 
+  και πιθανές βελτιστοποιήσεις ή ιδέες που επιταχύνουν την εύρεση της λύσης.</p>
+<hr width="62%">
+<p><strong><a name="A2"></a>Άσκηση 2<sup>η</sup></strong>-Μετράει για 25% του 
+  τελικού βαθμού- παραδοτέα μέχρι 17/12/2008</p>
+<p>Γραψτε κλαση <font face="Courier New, Courier, mono">BinTree</font> που αναπαριστανει 
+  <strong>δυαδικα δεντρα σε πινακα</strong>, τοποθετωντας τη ριζα στη θεση 1 και 
+  για καθε κομβο i, το αριστερο του παιδι στο 2*i, και το δεξι στο 2*i+1. Φυλαξτε 
+  καπου το πληθος των κομβων του δεντρου. Υλοποιηστε κατασκευαστη, μεθοδους <font face="Courier New, Courier, mono">insert(i,x)</font> 
+  και <font face="Courier New, Courier, mono">delete(i)</font>, που εισαγουν και 
+  διαγραφουν τον κομβο που ειναι αποθηκευμενος στη θεση i, εφοσον επιτρεπεται, 
+  και τις <font face="Courier New, Courier, mono">left</font>, <font face="Courier New, Courier, mono">right</font>, 
+  <font face="Courier New, Courier, mono">parent</font>, <font face="Courier New, Courier, mono">isInternal</font>, 
+  <font face="Courier New, Courier, mono">isExternal</font>, <font face="Courier New, Courier, mono">depth</font>, 
+  <font face="Courier New, Courier, mono">height</font> που επιστρεφουν τις αντιστοιχες 
+  πληροφοριες για κομβο του δεντρου. Επισης τις μεθοδους <font face="Courier New, Courier, mono">size</font>, 
+  <font face="Courier New, Courier, mono">treeHeight</font>, <font face="Courier New, Courier, mono">traverseInOrder</font> 
+  (εσωδιαταξη) για το δεντρο. Γραψτε τεκμηριωση javadoc για τις δημοσιες μεθοδους. 
+  Ξεκινήστε από <a href="/ADD/bt.zip">εδώ.</a></p>
+<p>Σε μια αλλη κλαση <font face="Courier New, Courier, mono">BinTreeTest</font> 
+  φτιαξτε ενα ισοζυγισμενο δυαδικο δεντρο αναζητησης με κομβους Τ, Ψ, Β, Κ, Σ, 
+  Μ, Θ, Ω, Δ, Λ, Γ καλωντας καταλληλα την <font face="Courier New, Courier, mono">insert</font> 
+  . Για δοκιμη, εφαρμοστε ολες τις μεθοδους της <font face="Courier New, Courier, mono">BinTree</font> 
+  τουλαχιστον μια φορα. </p>
+<p>Προαιρετικο 1: Υλοποιηστε στη <font face="Courier New, Courier, mono">BinTree</font> 
+  μεθοδους: <font face="Courier New, Courier, mono">balanceFactor(i)</font> = 
+  συντελεστης ισορροπιας κομβου, <font face="Courier New, Courier, mono">nearestCommonAncestor(i,j)</font>= 
+  κοντινοτερος κοινος προγονος δυο κομβων, <font face="Courier New, Courier, mono">distance(i,j</font>) 
+  = αποσταση δύο κομβων, <font face="Courier New, Courier, mono">diameter()</font>= 
+  διαμετρος του δεντρου. Για τους ορισμους, ανατρεξτε στις διαφανειες του μαθηματος. 
+  <br>
+  Επισης, φτιαξτε μεθοδο <font face="Courier New, Courier, mono">howFull</font><font face="Courier New, Courier, mono">() 
+  </font>που επιστρεφει το πηλικο του πληθους των κομβων του δεντρου δια του μεγιστου 
+  αριθμου κομβων που θα μπορουσε να εχει, δεδομενου του υψους του, πχ ένα δέντρο 
+  11 κόμβων και υψους 4, θα εχει 11 / 2<sup>4+1</sup>-1 = 0,35. Ποια είναι η ελάχιστη 
+  και η μέγιστη τιμή του;</p>
+<p>Προαιρετικο 1α: Υλοποιηστε ολες τις διαπερασεις δεντρων. Εκτος απο την εσωδιαταξη, 
+  φτιαξτε προδιαταξη, μεταδιαταξη και διαπεραση κατα επιπεδα. Για την τελευταια, 
+  χρειαζεται μια ουρα - μπορειτε να χρησιμοποιησετε τη βιβλιοθηκη <font face="Courier New, Courier, mono">java.util.Queue.</font></p>
+<p>Προαιρετικο 2: Γραψτε κλαση <font face="Courier New, Courier, mono">BinSrchTree</font> 
+  που επεκτεινει την <font face="Courier New, Courier, mono">BinTree</font> μεσω 
+  κληρονομικοτητας και υλοποιει δυαδικα δεντρα αναζητησης.</p>
+<hr width="62%">
+<p><strong><a name="A3"></a>Άσκηση 3<sup>η</sup></strong>- Μετράει για 25% του 
+  τελικού βαθμού - παραδοτέα μέχρι </p>
+<hr width="62%">
+<p><strong><a name="A4"></a>Άσκηση 4<sup>η</sup></strong>- Μετράει για 30% του 
+  τελικού βαθμού - Παραδοτέα μέχρι </p>
+<hr width="62%">
+<p><strong><a name="AM"></a>Άσκηση μπαλαντέρ</strong>- Μπορεί να αντικαταστήσει 
+  οποιαδήποτε από τις υπόλοιπες ασκήσεις</p>
+<p>Καθένας από n γιατρούς πρέπει να χειρουργήσει χωριστά καθένα από n ασθενείς. 
+  Ωστόσο οι χειρούργοι δε θέλουν να κολλήσουν τις αρρώστιες των ασθενών τους, 
+  ούτε θέλουν να μολύνουν κάποιον ασθενή με την αρρώστια κάποιου άλλου ασθενή. 
+  Οι διαδικαστικοί κανόνες στην κλινική απαιτούν ότι καμιά επιφάνεια γαντιού την 
+  οποία έχει αγγίξει ένας γιατρός δε θα πρέπει να αγγίξει κάποιο ασθενή. Υποθέστε 
+  επίσης ότι κάθε χειρούργος αρνείται να αγγίξει μία επιφάνεια γαντιού την οποία 
+  έχει αγγίξει κάποιος χειρούργος. <br>
+  a. Δείξτε ότι δύο χειρούργοι μπορούν να εγχειρίσουν δύο ασθενείς χρησιμοποιώντας 
+  μόνο δύο<strong> χειρουργικά γάντια </strong>συνολικά. (Υπόδειξη: Τα χειρουργικά 
+  γάντια είναι κατασκευασμένα από λάστιχο και άρα μπορούν να αντιστραφούν - δηλαδή 
+  να γυρίσει το μέσα έξω.) <a href="..\ADD07\giatroi2.htm">[Λύση από τον Θ.Μπάντιο - 10/10/2007]</a><br>
+  b. Ποιος είναι ο ελάχιστος αριθμός χειρουργικών γαντιών που απαιτούνται για 
+  να γίνουν n<sup>2</sup> εγχειρήσεις.<br>
+  c. Αποδείξτε ότι ο αλγόριθμός σας είναι βέλτιστος.<br>
+</p>
+</body>
+</html>

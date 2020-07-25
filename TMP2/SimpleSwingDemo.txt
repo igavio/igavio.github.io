@@ -1,0 +1,109 @@
+import java.awt.FlowLayout;
+import java.awt.event.*;
+import javax.swing.*;
+
+/** 
+ * @author Panayiotis
+ * A simple class that demonstrates a few Java Swing components: 
+ * JFrame, JLabel, JTextField and JButton. 
+ * It converts the temperature from Celsius to Fahrenheit.
+ */
+public class SimpleSwingDemo extends JFrame 
+					implements ActionListener {
+	
+	//Two text fields, two labels and a button, in flow layout 
+	JTextField textfield1, textfield2;
+	JLabel label1, label2;
+	JButton button1;
+	//value of the temperature in Fahrenheit
+	int fvalue = 0; //initial value
+	
+	//the constructor initialises all components and their properties
+	public SimpleSwingDemo(){
+		//create a JFrame with a title
+		super("Simple Java Swing demo");
+		//set the layout
+		setLayout(new FlowLayout());
+
+		//initialise components
+		label1 = new JLabel("Provide Celcius value for temprature: ");
+		
+		/* LINE TO BE REMOVED	
+		textfield1 = new JTextField("0", 4); //value 0, 4 columns width
+		label2 = new JLabel("The temprature in Fahrenheit is: ");
+		//need to convert integer to string using static Integer.toString(int)
+		textfield2 = new JTextField(Integer.toString(fvalue), 4);
+		//set the textfield not editable
+		textfield2.setEditable(false);
+		button1 = new JButton("Convert to Fahrenheit!");
+		//add a keystroke to the button
+		button1.setMnemonic(KeyEvent.VK_C);
+
+		//add action listener to the button and action command
+		button1.addActionListener(this); //listens to events for this component, 
+										//i.e. press button and keystroke events
+		button1.setActionCommand("Convert"); //this is the name of these events
+		
+		//add action listener to the textfield as well
+		textfield1.addActionListener(this); //listens to events on this component, i.e. enter
+		textfield1.setActionCommand("Convert"); //this is the name of these events
+					//same as above, since that we want to perform the same actions
+		
+		LINE TO BE REMOVED */
+		
+		//add all components to content pane (JFrame)
+		//(order matters here for flow layout...) 
+		add(label1);
+		/* LINE TO BE REMOVED 
+		add(textfield1);
+		add(button1);	
+		add(label2);
+		add(textfield2);
+		LINE TO BE REMOVED */
+	}	
+	
+	//creates a new simple swing demo object and shows it on user screen
+	public static void drawUI(){
+		SimpleSwingDemo demo = new SimpleSwingDemo(); //i.e. create all components  
+		demo.pack(); //calculate sizes of components for this window (JFrame)
+		demo.setVisible(true); //make this (Jframe) visible
+	}
+
+	//needs to be implemented by any class that implements ActionListener
+	public void actionPerformed(ActionEvent e) {
+		//if user has pressed the button or pressed enter
+		/* LINE TO BE REMOVED 
+		if ("Convert".equals(e.getActionCommand())) {
+			try {
+				String s = textfield1.getText();
+				fvalue = this.convertToFahrenheit(Integer.valueOf(s));
+				textfield2.setText(Integer.toString(fvalue));
+			}//try
+			catch (Exception exception){
+				JOptionPane.showMessageDialog(new JFrame(), "Please provide a value!");
+			}//catch		
+		}//if
+		LINE TO BE REMOVED */ 
+	}
+
+	/**
+	 * @param num - Temperature in Celsius
+	 * Returns temperature in Fahrenheit
+	 */
+	public int convertToFahrenheit(int num){
+		return num*9/5+32;
+	}
+	
+	/**
+	 * @param args - none needed
+	 */
+	public static void main(String[] args) {
+		// Schedule a job for the event dispatch thread:
+        // creating and showing this application's GUI.
+		//javax.swing.SwingUtilities.invokeLater(new Runnable() {
+          //  public void run() { 
+            	drawUI();
+            //}
+	//});
+	}
+}

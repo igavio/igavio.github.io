@@ -1,0 +1,31 @@
+public class Klimatistiko0
+{
+    //ιδιότητα: θερμοστάτης του κλιματιστικού
+    private int thermostatis;
+    
+    //κατασκευαστής: κάθε νέο κλιματιστικό έχει το θερμοστάτη στους 15 βαθμούς
+    public Klimatistiko0() 
+    {
+        thermostatis = 15; 
+    }
+
+    //μέθοδος: επιστρέφει την τιμή του θερμοστάτη
+    public int getThermostatis()
+    {
+        return thermostatis;
+    }
+    
+    //μέθοδος: ανεβάζει το θερμοστάτη κατά 4 βαθμούς
+    public void pioZesta()
+    {
+        if (thermostatis <= 26)
+            thermostatis = thermostatis + 4;
+    }
+    
+    //μέθοδος: κατεβάζει το θερμοστάτη κατά 4 βαθμούς
+    public void pioKrya()
+    {
+        if (thermostatis >= -11)
+            thermostatis = thermostatis - 4;
+    }
+}

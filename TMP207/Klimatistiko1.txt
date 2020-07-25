@@ -1,0 +1,65 @@
+public class Klimatistiko1
+{
+    //ιδιότητα: θερμοστάτης του κλιματιστικού
+    private int thermostatis;
+    //ιδιότητα: θερμοκρασία περιβάλλοντος
+    private int thermokrasia;
+    //ιδιότητα: κατάσταση (true=σε λειτουργία, false=εκτός λειτουργίας
+    private boolean katastasi;
+   
+    //κατασκευαστής: κάθε νέο κλιματιστικό έχει το θερμοστάτη στους 15 βαθμούς
+    //και δίνεται η τρέχουσα θερμοκρασία περιβάλλοντος
+    public Klimatistiko1(int thermokrasia) 
+    {
+        thermostatis = 15; 
+        this.thermokrasia = thermokrasia;
+        katastasi = updateKatastasi();
+    }
+
+    private boolean updateKatastasi()
+    {
+        if (Math.abs(thermostatis-thermokrasia) < 5)
+            return false;
+        else
+            return true;
+    }
+    
+    //μέθοδος: επιστρέφει την τιμή του θερμοστάτη
+    public int getThermostatis()
+    {
+        return thermostatis;
+    }
+    
+    //μέθοδος: ανεβάζει το θερμοστάτη κατά 4 βαθμούς
+    public void pioZesta()
+    {
+        if (thermostatis <= 26) {
+            thermostatis = thermostatis + 4;
+            katastasi = updateKatastasi();
+        }
+    }
+    
+    //μέθοδος: κατεβάζει το θερμοστάτη κατά 4 βαθμούς
+    public void pioKrya()
+    {
+        if (thermostatis >= -11) {
+            thermostatis = thermostatis - 4;
+            katastasi = updateKatastasi();
+        }
+    }
+    
+    //μέθοδος: αλλάζει τη θερμοκρασία του περιβάλλοντος
+    public void setThermokrasia(int thermokrasia)
+    {
+       this.thermokrasia = thermokrasia;
+       katastasi = updateKatastasi();
+    }
+    
+    //μέθοδος: επιστρέφει την τρέχουσα κατάσταση του κλιματιστικού
+    public String toString()
+    {
+        return "Θερμοστάτης: " + thermostatis + 
+               ", Θερμοκρασία περιβάλλοντος: " + thermokrasia +
+               ", Κατάσταση: " + katastasi;
+    }
+}

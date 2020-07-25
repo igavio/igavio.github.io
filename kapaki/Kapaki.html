@@ -1,0 +1,154 @@
+<!DOCTYPE html>      
+<html>
+<head>
+  <title>Προγράμματα για το καπάκι της οδοντόπαστας</title>
+  <link rel="stylesheet" href="Kapaki.css">
+</head>
+
+<body>
+  <h1>Το καπάκι της οδοντόπαστας</h1>
+  <h2>Υπολογίζει αν θα πέσει το καπάκι έξω από την εταζέρα.</h2>
+
+  <p>Για πληροφορίες δείτε στο <a href="https://igaviotis.wordpress.com/2017/02/17/%cf%84%ce%bf-%ce%ba%ce%b1%cf%80%ce%ac%ce%ba%ce%b9-%cf%84%ce%b7%cf%82-%ce%bf%ce%b4%ce%bf%ce%bd%cf%84%cf%8c%cf%80%ce%b1%cf%83%cf%84%ce%b1%cf%82/" target="_blank">σχετικό άρθρο.</a></p>
+  
+  <h3>Στοιχεία για το καπάκι (μετρήσεις σε χιλιοστά)</h3>  <!-- ΕΙΣΟΔΟΙ ΚΑΠΑΚΙΟΥ -->
+  
+  <p>Μεγάλη διάμετρος του καπακιού (μέτρηση στη βάση του καπακιού από την πλευρά που βιδώνει πάνω στο σωληνάριο):</p>
+  <input type="text" id="bigD" value="17">
+  
+  <p>Μικρή διάμετρος του καπακιού (μέτρηση στην κορυφή του καπακιού):</p>
+  <input type="text" id="smallD" value="14">
+  
+  <p>Ύψος του καπακιού (απόσταση από τη βάση ως την κορυφή):</p>
+  <input type="text" id="height" value="17">
+  
+  <h3>Στοιχεία για την τροχιά</h3> <!-- ΕΙΣΟΔΟΙ ΤΡΟΧΙΑΣ -->
+  
+  <p>Γωνία κλίσης (σε μοίρες) της βάσης του καπακιού από το άκρο της εταζέρας:</p>
+  <input type="text" id="goniaM" value="90">
+  
+  <p>Απόσταση του κέντρου βάρους του καπακιού από το άκρο της εταζέρας:</p>
+  <input type="text" id="smallS" value="68">
+
+  <p>Πλάτος του ραφιού της εταζέρας:</p>
+  <input type="text" id="bigS" value="136">
+  
+  <p><button type="button" onclick="ypologiseKapaki()">Εκτέλεση υπολογισμών</button></p>
+
+  <!-- ΕΞΟΔΟΙ -->
+  <p>Διάμετρος του μεγάλου κύκλου που διαγράφει η βάση του καπακιού: <span id="bigG"></span></p>
+  <p>Διάμετρος του μικρού κύκλου που διαγράφει η κορυφή του καπακιού: <span id="smallG"></span></p>
+  <p>Διάμετρος του μεσαίου κύκλου που διαγράφει το κέντρο βάρους του καπακιού: <span id="averG"></span></p>
+  
+  <p>Απόσταση που θα κατηφορίσει: <span id="katApos"></span></p>
+  <p>Θα πέσει από την  εταζέρα: <span id="thaPesei"></span></p>
+
+  <h3>Στατιστικά</h3> <!-- ΕΙΣΟΔΟΙ ΤΡΟΧΙΑΣ -->
+  <p> Για το συγκεκριμένο καπάκι με τις διαστάσεις που δόθηκαν παραπάνω, ας πειραματιστούμε για να δούμε πόσο συχνά θα πέφτει αν τοποθετηθεί σε μια τυχαία γωνία και σε μια τυχαία θέση στην εταζέρα.</p>
+
+  <p>Πλήθος δειγμάτων για κάθε μεταβλητή:</p>
+  <input type="text" id="deigmata" value="10">
+  
+  <p><button type="button" onclick="statistikiKapakiou()">Υπολογισμός στατιστικής</button></p>
+  
+  <p>Ποσοστό πτώσεων: <span id="posostoPtoseon"></span></p>
+
+<script>
+
+function ypologiseKapaki() {
+   
+  var temp = document.getElementById("bigD").value; //Get value of input field
+  if (isNaN(temp) || temp < 1) {    //Check input validity
+    alert ("Μη έγκυρη είσοδος στη μεγάλη διάμετρο");
+  } else {
+    var dBigD = temp;
+    temp = document.getElementById("smallD").value; //Get value of input field
+    if (isNaN(temp) || temp < 1) {     //Check input validity
+      alert("Μη έγκυρη είσοδος στη μικρή διάμετρο");
+    } else {
+      var dSmallD = temp;
+      temp = document.getElementById("height").value; //Get value of input field
+      if (isNaN(temp) || temp < 1) {     //Check input validity
+        alert("Μη έγκυρη είσοδος στο ύψος");
+      } else {
+        var dHeight = temp;
+        if (dBigD < dSmallD) {
+          alert("Η μεγάλη διάμετρος πρέπει να είναι μεγαλύτερη της μικρής διαμέτρου.");
+        } else {
+          //υπολογισμός ακτίνας τροχιάς
+          var dBigR =  dBigD / 2.0;
+          var dSmallR =  dSmallD / 2.0;
+          var dBigG = (Math.sqrt((dBigR-dSmallR) * (dBigR-dSmallR) + dHeight*dHeight)) / (1 - dSmallR/dBigR); 
+          document.getElementById("bigG").innerHTML = dBigG;
+	      var dSmallG = dBigG * (dSmallR/dBigR);
+          document.getElementById("smallG").innerHTML = dSmallG;
+	      var dAverG = (dSmallG + dBigG) / 2.0;
+          document.getElementById("averG").innerHTML = dAverG;  
+          temp = document.getElementById("goniaM").value; 
+          if (isNaN(temp) || ((temp < 0) || (temp > 180))) {
+            alert("Η γωνία πρέπει να είναι μεταξύ 0 και 180 μοιρών.");
+          } else {          
+            var dGoniaA = Math.PI * temp / 180.0; //μετατροπή γωνιάς σε ακτίνια 
+            var dFA = dAverG * (1.0 - Math.cos(dGoniaA)); //κατακόρυφη απόσταση
+            document.getElementById("katApos").innerHTML = dFA;
+            temp = document.getElementById("smallS").value; 
+            if (isNaN(temp) || (temp < 0)) {
+              alert("Μη έγκυρη είσοδος στην απόσταση");
+            } else {
+              var dSmallS = temp;
+              temp = document.getElementById("bigS").value; 
+              if (isNaN(temp) || (temp < 0)) {
+                alert("Μη έγκυρη είσοδος στο πλάτος του ραφιού της εταζέρας");
+              } else {
+                var dBigS = temp;
+                if (dSmallS > dBigS)
+                  document.getElementById("thaPesei").innerHTML = "Ναι";
+                else
+                  document.getElementById("thaPesei").innerHTML = "Όχι";
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+function statistikiKapakiou() {
+  var temp = document.getElementById("deigmata").value; //Get value of input field
+  if (isNaN(temp) || temp < 1) {    //Check input validity
+    alert ("Μη έγκυρη είσοδος στο πλήθος δειγμάτων");
+  } else {
+    var iDeigmata = temp; //πλήθος δειγμάτων
+    temp = document.getElementById("bigS").value; 
+    if (isNaN(temp)) {
+      alert("Μη έγκυρη είσοδος στο πλάτος του ραφιού της εταζέρας");
+    } else {
+      dBigS = temp; //πλάτος ραφιού
+      temp = document.getElementById("averG").innerText; 
+      if (isNaN(temp) || temp == "") {
+        alert("Πατήστε 'Εκτέλεση υπολογισμών' πρώτα.");
+      } else {
+        var dAverG = temp; //ακτίνα κύκλου
+        var dFA;
+        var peftei = 0; var ola=0;
+        var goniaStep = Math.PI / iDeigmata;
+        var apoStep = dBigS / iDeigmata;
+        for (a = 0; a < Math.PI; a += goniaStep) { //μοιράζει το π σε δείγματα
+          for (s = 0; s < dBigS; s += apoStep) { //μοιράζει το πλάτος σε δείγματα
+            ola++;
+            dFA = dAverG * (1.0 - Math.cos(a)); //κατακόρυφη απόσταση
+            //alert(ola + " # " + a + " # " + s + " # " + dFA);
+            if (dFA > s) peftei++;        
+          }
+        } //end for
+      }
+    }
+  }
+  document.getElementById("posostoPtoseon").innerHTML = peftei + "/" + ola + " = " + (peftei/ola*100) + "%";
+}
+
+</script>
+  
+</body>
+</html>

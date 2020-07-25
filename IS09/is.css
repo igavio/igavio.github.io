@@ -1,0 +1,18 @@
+P 
+{
+	TEXT-ALIGN: justify
+}
+
+BODY
+{
+	MARGIN-LEFT: 2%; 
+	MARGIN-RIGHT: 2%; 
+	FONT-FAMILY: Georgia, Geneva, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #FF99FF;
+}
+
+INPUT.BUTTON
+{
+    COLOR: #fff; BACKGROUND: #0034D0;
+    FONT-WEIGHT:bold;
+}

@@ -1,0 +1,41 @@
+public class Lampa
+{
+    private boolean status;
+    private int     watt;
+    
+    public Lampa (int newWatt) {
+        status = false;
+        watt   = newWatt;
+    }
+    
+    public boolean getStatus() {
+        return status;
+    }
+    
+    public int getWatt() {
+        return watt;
+    }
+      
+    public void anapse(){
+        status = true;
+    }
+    
+    public void sbhse(){
+        status = false;
+    }
+    
+    public int getKatanalosi() {
+        //return status?watt:0;
+        if (status == true)
+            return watt;
+        else
+            return 0;       
+    }
+
+    public void ektipose() {
+        System.out.println("Κατάσταση:  " + (status?"ΑΝΑΜΜΕΝΗ":"ΣΒΥΣΤΗ") + "\n" +
+                           "Ισχύς:      " + watt + "\n" + 
+                           "Κατανάλωση: " + getKatanalosi() );
+    }
+    
+}

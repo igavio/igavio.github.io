@@ -1,0 +1,99 @@
+import javax.swing.*;
+
+public class Zari2 {
+
+    public static void main(String[] str) {
+        int poso;       //ta xrimata mou
+        int stoixima;   //ti poso stoiximatizw
+        int zari;       //ti efere to zari
+        int arxikoposo; //metavliti gia na 3erw me posa xrimata arxisa
+        int metritis;   //metavliti gia na 3erw poses fores epai3a
+        int kerdismenes;//metavliti gia na 3erw poses fores kerdisa
+        int xamenes;    //metavliti gia na 3erw poses fores exasa
+        int passo;      //metavliti gia tis fores p dn ekana tpt
+        int posostokerd;//metavliti gia na upologisw to pososto twn forwn pou kerdisa
+        int posostoxam; //metavliti gia na upologisw to pososto twn forwn pou exasa
+        int posostopasso;//metavliti gia na upologisw to pososto twn forwn pou dn ekana tpt
+        int zarib;      //ti efere to zari b
+        int athroismazariwn;//metavliti gia na upologisw to a8roisma twn zariwn
+        String strStoixima;
+        String strPoso;
+        metritis = 0;   //dn exw pai3ei kamia fora akoma
+        kerdismenes = 0;//dn exw kerdisei kamia fora akoma
+        xamenes = 0;    //dn exw xasei kamia fora akoma
+        passo = 0;  //dn exw xasei tpt akoma
+
+        do {//an valeis poso mikrotero h iso me to 0 tote s leei na 3anaeisageis to poso s mexris otou na einai megalutero tou 0
+            strPoso = JOptionPane.showInputDialog("Dilwse posa xrimata exeis sunolika.");
+            poso = Integer.parseInt(strPoso);
+        } while (poso <= 0);
+
+        do {//an valeis stoixhma mikrotero tou 0 tote s leei na 3anavaleis stoixima mexris otou na einai 0 h megalutero
+            strStoixima = JOptionPane.showInputDialog("Posa vazeis;");
+            stoixima = Integer.parseInt(strStoixima);
+            if (stoixima <= 0 || stoixima >= 100) {
+                JOptionPane.showMessageDialog(null, "prepei na stoiximatiseis meta3u 1 kai 99");
+            }
+        } while (stoixima <= 0 || stoixima >= 100);
+
+        arxikoposo = poso;//krataei to arxiko mou poso
+
+        while (stoixima != -1 && poso > 0) { //an valeis stoixima diaforetiko apo -1 kai an exeis akoma xrimata na stoiximatiseis to paixnidi sunexizei
+            if (stoixima <= poso) { //an exeis tosa lefta osa to stoixima p evales tote to paixnidi sunexizei alliws s zitaei na 3anapontareis
+                metritis = metritis + 1;//metraei tis fores pou exw pai3ei
+
+                JOptionPane.showMessageDialog(null, "STOIXHMA:" + stoixima);//minima gia to poso stoixatimatises
+
+
+                zari = 1 + (int) (6 * Math.random());//rixnei to zari
+
+                JOptionPane.showMessageDialog(null, "TO 1o ZARI:" + zari);//minima gia to ti efere to zari
+
+                zarib = 1 + (int) (6 * Math.random());//rixnei to zari b
+
+                JOptionPane.showMessageDialog(null, "TO 2o ZARI:" + zarib);//minima gia to ti efere to zari b
+
+                athroismazariwn = zari + zarib;
+
+                if (athroismazariwn > 8) {
+                    JOptionPane.showMessageDialog(null, "Kerdisate me ta 2 zaria");
+                    poso = (poso - stoixima) + stoixima * 2;//upologizei ta xrimata pou exeis afou kerdises
+                    kerdismenes = kerdismenes + 1;//metraei tis fores pou exeis kerdisei
+                } else if (athroismazariwn < 3) {
+                    JOptionPane.showMessageDialog(null, "Xasate me 2 zaria");
+                    poso = poso - stoixima;//upologizei ta xrimata pou exeis afou exases
+                    xamenes = xamenes + 1;//metraei tis fores pou exeis xasei
+                } else {
+                    JOptionPane.showMessageDialog(null, "Tipota me ta 2 zaria");
+                    passo = passo + 1;//metraei tis fores p dn ekanes tpt
+                    poso = poso + 0;
+                }
+
+                if (poso > 0) {//sun8iki me thn opoia an exeis akoma xrimata 3anapontareis alliws to paixnidi teleiwnei
+                    do {//an valeis stoixhma mikrotero tou 0 tote s leei na 3anavaleis stoixima mexris otou na einai 0 h megalutero
+                        strStoixima = JOptionPane.showInputDialog("Posa vazeis;");
+                        stoixima = Integer.parseInt(strStoixima);
+                        if (stoixima <= 0 || stoixima >= 100) {
+                            JOptionPane.showMessageDialog(null, "prepei na stoiximatiseis meta3u 1 kai 99");
+                        }
+                    } while (stoixima <= 0 || stoixima >= 100);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Den exeis alla flouria na pontareis");//minima p emfanizetai an den exeis alla xrimata na sunexiseis to paixnidi
+                }
+            } else {
+                strStoixima = JOptionPane.showInputDialog("Den exeis tosa flouria na pontareis.Mporeis na pontareis mono mexri kai " + poso + " flouria.Ksanapontare!");//minima p emfanizetai an pontareis perissotera xrimata ap'osa exeis
+                stoixima = Integer.parseInt(strStoixima);
+            }
+
+        }
+
+        JOptionPane.showMessageDialog(null, "To paixnidi teleiwse");//evales stoixima iso me -1 h den exeis xrimata stamataei to paixnidi
+
+        posostokerd = kerdismenes * 100 / metritis;//upologizei to pososto twn forwn p kerdises
+        posostoxam = xamenes * 100 / metritis;//upologizei to pososto twn forwn p exases
+        posostopasso = passo * 100 / metritis;
+
+        JOptionPane.showMessageDialog(null, "Ksekinises me " + arxikoposo + " flouria, epaikses " + metritis + " fores, kerdises " + posostokerd + "% kai exases " + posostoxam + "% kai eferes passo" + posostopasso + " %. Sto telos exeis " + poso + " flouria");//minima gia ta arxika sou xrimata,fores pou epai3es,pososta forwn pou kerdises kai exases kai ta telika sou xrimata
+
+    }
+}

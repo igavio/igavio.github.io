@@ -1,0 +1,77 @@
+public class Klimatistiko2
+{
+    //ιδιότητα: θερμοστάτης του κλιματιστικού
+    private int thermostatis;
+    //ιδιότητα: θερμοκρασία περιβάλλοντος
+    private int thermokrasia;
+    //ιδιότητα: κατάσταση ("ΣΒΗΣΤΟ", "ΨΥΞΗ", "ΘΕΡΜΑΝΣΗ")
+    private String katastasi;
+    //ιδιότητα: turbo
+    private boolean turbo;
+   
+    //κατασκευαστής: κάθε νέο κλιματιστικό έχει το θερμοστάτη στους 15 βαθμούς
+    //και δίνεται η τρέχουσα θερμοκρασία περιβάλλοντος
+    public Klimatistiko2(int thermokrasia) 
+    {
+        thermostatis = 15; 
+        this.thermokrasia = thermokrasia;
+        updateKatastasiKaiTurbo();
+    }
+
+    //ιδιωτική μέθοδος που υπολογίζει την τιμή της κατάστασης και του turbo
+    private void updateKatastasiKaiTurbo()
+    {
+        if (Math.abs(thermostatis - thermokrasia) < 5)
+            katastasi = "ΣΒΗΣΤΟ";
+        else
+            if (thermokrasia > thermostatis)
+                katastasi = "ΨΥΞΗ";
+            else
+                katastasi = "ΘΕΡΜΑΝΣΗ";
+    
+        if (Math.abs(thermostatis - thermokrasia) < 10)
+            turbo = false;
+        else
+            turbo = true;
+    }
+    
+    //μέθοδος: επιστρέφει την τιμή του θερμοστάτη
+    public int getThermostatis()
+    {
+        return thermostatis;
+    }
+    
+    //μέθοδος: ανεβάζει το θερμοστάτη κατά 4 βαθμούς
+    public void pioZesta()
+    {
+        if (thermostatis <= 26) {
+            thermostatis = thermostatis + 4;
+            updateKatastasiKaiTurbo();
+        }
+    }
+    
+    //μέθοδος: κατεβάζει το θερμοστάτη κατά 4 βαθμούς
+    public void pioKrya()
+    {
+        if (thermostatis >= -11) {
+            thermostatis = thermostatis - 4;
+            updateKatastasiKaiTurbo();
+        }
+    }
+    
+    //μέθοδος: αλλάζει τη θερμοκρασία του περιβάλλοντος
+    public void setThermokrasia(int thermokrasia)
+    {
+       this.thermokrasia = thermokrasia;
+       updateKatastasiKaiTurbo(); 
+    }
+    
+    //μέθοδος: επιστρέφει την τρέχουσα κατάσταση του κλιματιστικού
+    public String toString()
+    {
+        return "Θερμοστάτης: " + thermostatis + 
+               ", Θερμοκρασία περιβάλλοντος: " + thermokrasia +
+               ", Κατάσταση: " + katastasi +
+               ", Turbo: " + turbo;
+    }
+}

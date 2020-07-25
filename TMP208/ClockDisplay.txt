@@ -1,0 +1,117 @@
+/**
+ * Διψήφια οθόνη που μετράει από 00 ως το όριο-1
+ * @version 2005.03.10
+ */
+public class NumberDisplay {
+  
+  /**
+   * όριο που ποτέ δεν φτάνει
+   */
+  private int limit; 
+  
+  /**
+   * τρέχουσα τιμή οθόνης
+   */
+  private int value; 
+  
+  /**
+   * Κατασκευάζει μια οθόνη που μετράει από 00 ως το συγκεκριμένο όριο -1.
+   * @param rollOverLimit int
+   */
+  public NumberDisplay(int rollOverLimit) { 
+    limit = rollOverLimit; 
+    value = 0;
+  }
+
+  /**
+   * Επιστρέφει την τρέχουσα τιμή της οθόνης ως ακέραια τιμή.
+   * @return int
+   */
+  public int getValue() { 
+    return value; 
+  }
+  
+  /**
+   * Επιστρέφει την τρέχουσα τιμή της οθόνης ως διψήφια συμβολοσειρά.
+   * @return String
+   */
+  public String getDisplayValue() {
+    if (value < 10) 
+      return "0" + value;
+    else
+      return ""  + value; //για να μετατραπεί ο αριθμός σε συμβολοσειρά
+  }
+
+  /**
+   * θέτει μια νέα τιμή για την οθόνη.
+   * Για να είναι νόμιμη πρέπει να κυμαίνεται από 0 ως όριο -1.
+   * @param newValue int
+   */
+  public void setValue(int newValue) { 
+    if( (newValue >= 0) && (newValue < limit) )
+      value = newValue; // Η αλλαγή γίνεται μόνον αν είναι νόμιμη η νέα τιμή.
+  }
+
+  /**
+   * Προχωράει την τιμή.
+   */
+  public void increment() { 
+    value = (value + 1) % limit;   
+  }
+}
+ 
+/**
+ * Ψηφιακό ρολόι που προβάλλει ώρα και λεπτά με τη μορφή ωω:λλ
+ * πχ 04:45 ή 23:39
+ * @version 2005.03.10
+ */
+public class ClockDisplay {
+  
+  /**
+   * οθόνη για τις ώρες
+   */
+  private NumberDisplay hours;
+  
+  /**
+   * οθόνη για τα λεπτά
+   */
+  private NumberDisplay minutes;
+
+  /**
+   * Κατασκευάζει ρολόι με συγκεκριμένη ώρα και λεπτά.
+   * @param hour int
+   * @param minute int
+   */
+  public ClockDisplay(int hour, int minute) {
+    hours = new NumberDisplay(24); // κατασκευάζει διψήφια οθόνη
+    minutes = new NumberDisplay(60); // ... και άλλη μια
+    setTime(hour, minute); // θέτει τη συγκεκριμένη ώρα
+  }
+
+  /**
+   * Προχωράει την ώρα κατά ένα λεπτό.
+   */
+  public void timeTick() {
+    minutes.increment();
+    if (minutes.getValue() == 0) 
+      hours.increment();
+  }
+
+  /**
+   * Θέτει την ώρα και τα λεπτά του ρολογιού
+   * @param hour int
+   * @param minute int
+   */
+  public void setTime(int hour, int minute) {
+    hours.setValue(hour); 
+    minutes.setValue(minute);
+  }
+
+  /**
+   * Επιστρέφει την ώρα του ρολογιού.
+   * @return String
+   */
+  public String getTime() {
+    return hours.getDisplayValue() + ":" +  minutes.getDisplayValue();
+  }
+}

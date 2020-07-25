@@ -1,0 +1,60 @@
+import java.awt.FlowLayout;
+import java.awt.event.*;
+import javax.swing.*;
+
+/** 
+ * A simple class that demonstrates a few Java Swing components: 
+ * JFrame, JPanel, JLabel, JTextField and JButton.
+ * Also two layout managers: FlowLayout and BoxLayout 
+ * It converts the temperature from Celsius to Fahrenheit.
+ */
+public class SimpleGUI extends JFrame implements ActionListener {
+    
+    //All attributes, mainly user interface components
+    JPanel p;
+    
+    //the constructor initialises all components and their properties
+    public SimpleGUI(){
+        //create this JFrame with a title
+        super("Simple GUI");
+        //set flow layout for the JFrame
+        setLayout(new FlowLayout());
+        
+        //add a panel onto which components will be laid out
+	p = new JPanel();
+	p.setBorder(BorderFactory.createTitledBorder("F to C Conversion"));
+	add(p);		
+	//set layout for panel
+	//p.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+	p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+	
+        //initialise components...
+        
+        //add action listener and action commend to the button and the text field...
+        
+        //add components to the GUI... - i.e. to the panel
+        
+    }
+    
+    //creates a new simple swing demo object and shows it on user screen
+    public static void drawUI(){
+        SimpleGUI demo = new SimpleGUI(); //i.e. create all components  
+	demo.pack(); //calculate sizes of components for this window (JFrame)
+	demo.setVisible(true); //make this (Jframe) visible 
+    }
+    
+    //needs to be implemented by any class that implements ActionListener
+    public void actionPerformed(ActionEvent e) {
+        //if user has pressed the button or pressed enter, convert the value 
+        //and show it to the user...
+
+    }
+    
+    public int convertToFahrenheit(int num){
+        return num*9/5+32;
+    }
+    
+    public static void main(String[] args) {
+	drawUI();
+    }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Ergasthrio2.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.comment {color: #969696}
+.line-number {background-color: #e9e8e2}
+.ST0 {color: #ce7b00; font-family: Monospaced; font-weight: bold}
+.character {color: #ce7b00}
+.keyword-directive {color: #0000e6}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">D:\My Documents\NetBeansProjects\JavaApplication1\src\javaapplication1\Ergasthrio2.java</td></tr></table>
+<pre>
+<span class="line-number"> 1</span> <span class="keyword-directive">package</span> javaapplication1;
+<span class="line-number"> 2</span> 
+<span class="line-number"> 3</span> <span class="keyword-directive">import</span> java.util.Random; <span class="comment">// βιβλιοθηκη για την γεννητρια τυχαιων αριθμων</span>
+<span class="line-number"> 4</span> 
+<span class="line-number"> 5</span> <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> Ergasthrio2 { <span class="comment">// ΤΑΞΙΝΟΜΗΣΗ, ΧΡΟΝΟΜΕΤΡΗΣΗ, ΒΗΜΑΤΙΚΗ ΕΚΤΕΛΕΣΗ</span>
+<span class="line-number"> 6</span> 
+<span class="line-number"> 7</span>     <span class="keyword-directive">final</span> <span class="keyword-directive">static</span> <span class="keyword-directive">int</span> n = 20000; <span class="comment">//σταθερα για το μεγεθος του προβληματος</span>
+<span class="line-number"> 8</span> 
+<span class="line-number"> 9</span>     <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> main(String[] args) {
+<span class="line-number">10</span> 
+<span class="line-number">11</span>         <span class="comment">// γεμισμα του πινακα με τυχαιους αριθμους</span>
+<span class="line-number">12</span>         Random randomGenerator = <span class="keyword-directive">new</span> Random();
+<span class="line-number">13</span>         <span class="keyword-directive">int</span> a[] = <span class="keyword-directive">new</span> <span class="keyword-directive">int</span>[n];
+<span class="line-number">14</span>         <span class="keyword-directive">for</span> (<span class="keyword-directive">int</span> i = 0; i &lt; n; i++) {
+<span class="line-number">15</span>             a[i] = randomGenerator.nextInt(32767);
+<span class="line-number">16</span>         }
+<span class="line-number">17</span>         
+<span class="line-number">18</span>         <span class="keyword-directive">double</span> startTime = System.currentTimeMillis();
+<span class="line-number">19</span>         <span class="keyword-directive">int</span> tempForSwap, minElementPosition;
+<span class="line-number">20</span>         <span class="keyword-directive">for</span> (<span class="keyword-directive">int</span> i = 0; i &lt; n; i++) { <span class="comment">// ευρεση του ελαχιστου</span>
+<span class="line-number">21</span>             minElementPosition = i;
+<span class="line-number">22</span>             <span class="keyword-directive">for</span> (<span class="keyword-directive">int</span> j = i + 1; j &lt; n; j++) {
+<span class="line-number">23</span>                 <span class="keyword-directive">if</span> (a[j] &lt; a[minElementPosition]) {
+<span class="line-number">24</span>                     minElementPosition = j;
+<span class="line-number">25</span>                 }
+<span class="line-number">26</span>             }
+<span class="line-number">27</span>             tempForSwap = a[minElementPosition]; <span class="comment">//αντιμεταθεση</span>
+<span class="line-number">28</span>             a[minElementPosition] = a[i];
+<span class="line-number">29</span>             a[i] = tempForSwap;
+<span class="line-number">30</span>         }
+<span class="line-number">31</span>         <span class="keyword-directive">double</span> finishTime = System.currentTimeMillis();
+<span class="line-number">32</span> 
+<span class="line-number">33</span>         <span class="keyword-directive">for</span> (<span class="keyword-directive">int</span> i = 0; i &lt; n; i++) {
+<span class="line-number">34</span>             System.out.println(<span class="character">&quot;</span><span class="character">θέση</span><span class="ST0">\t</span><span class="character">&quot;</span> + i + <span class="character">&quot;</span><span class="ST0">\t</span><span class="character">&quot;</span> + a[i]);
+<span class="line-number">35</span>         }
+<span class="line-number">36</span>         
+<span class="line-number">37</span>         System.out.println(<span class="character">&quot;</span><span class="character">Διάρκεια = </span><span class="character">&quot;</span> + 
+<span class="line-number">38</span>                 (finishTime - startTime) / 1000.0 + <span class="character">&quot;&quot;</span> + <span class="character">&quot;</span><span class="character"> δευτερόλεπτα</span><span class="character">&quot;</span>);
+<span class="line-number">39</span>         System.exit(0);
+<span class="line-number">40</span>     }
+<span class="line-number">41</span> }
+<span class="line-number">42</span> 
+<span class="line-number">43</span> 
+<span class="line-number">44</span> 
+</pre></body>
+</html>

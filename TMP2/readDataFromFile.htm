@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.comment {color: #969696}
+.line-number {background-color: #e9e8e2}
+.ST0 {color: #969696; font-family: Monospaced; font-weight: bold}
+.keyword-directive {color: #0000e6}
+.character {color: #ce7b00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">D:\My Documents\NetBeansProjects\ForEx3\src\forex3\Main.java</td></tr></table>
+<pre>
+<span class="line-number"> 1</span> <span class="keyword-directive">package</span> forex3;
+<span class="line-number"> 2</span> 
+<span class="line-number"> 3</span> <span class="keyword-directive">import</span> java.util.*;
+<span class="line-number"> 4</span> <span class="keyword-directive">import</span> java.io.*;
+<span class="line-number"> 5</span> 
+<span class="line-number"> 6</span> <span class="keyword-directive">public</span> <span class="keyword-directive">class</span> Main {
+<span class="line-number"> 7</span> 
+<span class="line-number"> 8</span>   <span class="keyword-directive">public</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> main(String[] args) <span class="keyword-directive">throws</span> FileNotFoundException {
+<span class="line-number"> 9</span>     readDataFromFile();
+<span class="line-number">10</span>   }
+<span class="line-number">11</span> 
+<span class="line-number">12</span>   <span class="comment">/**</span>
+<span class="line-number">13</span> <span class="comment">   * </span><span class="comment">Διαβάζει</span> <span class="comment">δεδομένα</span> <span class="comment">από</span> <span class="comment">ένα</span> <span class="comment">αρχείο</span> <span class="comment">οργανωμένα</span> <span class="comment">σε</span> <span class="comment">γραμμές</span> <span class="comment">και</span> <span class="comment">τα</span> <span class="comment">αναγνωρίζει</span> <span class="comment">ως</span> <span class="comment">τεκμήρια</span>
+<span class="line-number">14</span> <span class="comment">   * </span><span class="ST0">@throws</span> <span class="comment">java</span><span class="comment">.</span><span class="comment">io</span><span class="comment">.</span><span class="comment">FileNotFoundException</span> <span class="comment">παραπονιέται</span> <span class="comment">αν</span> <span class="comment">δεν</span> <span class="comment">βρει</span> <span class="comment">το</span> <span class="comment">αρχείο</span>
+<span class="line-number">15</span>    <span class="comment">*/</span>
+<span class="line-number">16</span>   <span class="keyword-directive">private</span> <span class="keyword-directive">static</span> <span class="keyword-directive">void</span> readDataFromFile() <span class="keyword-directive">throws</span> FileNotFoundException {
+<span class="line-number">17</span>     File f = <span class="keyword-directive">new</span> File(<span class="character">&quot;</span><span class="character">DataFile.txt</span><span class="character">&quot;</span>); <span class="comment">//τοποθέτησε το αρχείο στον φάκελο του project</span>
+<span class="line-number">18</span>     Scanner inp = <span class="keyword-directive">new</span> Scanner(f);
+<span class="line-number">19</span>     String sLine; <span class="comment">//μια γραμμή διαβασμένη από το αρχείο</span>
+<span class="line-number">20</span>     StringTokenizer t; <span class="comment">//μια συλλογή από &#39;τεκμήρια&#39; χωρισμένες με κενά</span>
+<span class="line-number">21</span>     String token; <span class="comment">//ένα τεκμήριο, πχ ένας αριθμός ή μια ημερομηνία</span>
+<span class="line-number">22</span>     <span class="keyword-directive">while</span> (inp.hasNext()) { <span class="comment">//για κάθε γραμμή του αρχείου</span>
+<span class="line-number">23</span>       sLine = inp.nextLine(); <span class="comment">//διαβάζει μια γραμμή</span>
+<span class="line-number">24</span>       t = <span class="keyword-directive">new</span> StringTokenizer(sLine); <span class="comment">//την τεματίζει σε κομμάτια</span>
+<span class="line-number">25</span>       <span class="keyword-directive">while</span> (t.hasMoreTokens()) { <span class="comment">//για όλα τα τεκμήρια</span>
+<span class="line-number">26</span>         token = t.nextToken(); <span class="comment">//απομόνωσε το</span>
+<span class="line-number">27</span>         System.out.println(token); <span class="comment">//κάνε κάτι με αυτό, πχ μετατροπή, αποθήκευση</span>
+<span class="line-number">28</span>       }
+<span class="line-number">29</span>     }
+<span class="line-number">30</span>   }
+<span class="line-number">31</span> }
+<span class="line-number">32</span> 
+</pre></body>
+</html>
