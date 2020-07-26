@@ -1,4 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 TRANSITIONAL//en">
 <HTML>
 <HEAD>
 <TITLE> Αρχική σελίδα Γιάννη Γαβιώτη </TITLE>
