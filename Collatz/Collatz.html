@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>      
 <html lang="el">
 <head>
@@ -97,3 +98,104 @@ function computeAll(n){
   
 </body>
 </html>
+=======
+<!DOCTYPE html>      
+<html lang="el">
+<head>
+  <title>Προγράμματα για Collatz</title> 
+  <link rel="stylesheet" href="Collatz.css">
+</head>
+
+<body>
+  <h1>Ακολουθία Collatz</h1>
+  <p>Τυπώνει την ακολουθία των αριθμών που προκύπτουν μετρώντας το μήκος των ακολουθιών χαλαζιού.</p>
+  
+  <p>
+  Δώστε έναν θετικό ακέραιο αριθμό:
+  <input type="text" id="numb">
+  <button type="button" onclick="myWrapper()">Submit</button>
+  </p>
+  
+  <canvas id="myCanvas" style="border:1px solid #000000;"></canvas> 
+  <p>Μέγιστος ακολουθίας: <span id="maxseq"></span></p>
+  <p>Όροι ακολουθίας Collatz: <span id="colseq"></span></p>
+  
+<script>
+
+function myWrapper() {
+  var n = document.getElementById("numb").value; //Get value of input field
+  if (isNaN(n) || n < 1)     //Check input validity
+    document.getElementById("colseq").innerHTML = "Μη έγκυρη είσοδος";
+  else {
+    if (n > 200000) alert("Θα πρέπει να έχεις υπομονή!"); 
+	computeAll(n);
+  }
+}
+
+function f(n) {
+  //HOTPO function
+  if (n % 2 == 0)
+    return n/2;
+  else
+    return 3*n+1;
+}
+
+function h(n) {
+  //Hailstone sequence
+  var seq = n + "";
+  while (n > 1) {
+    n = f(n);
+    seq = seq + " " + n;
+  }
+  return seq;
+}
+
+function t(n) {
+  //Collatz number
+  var len = 0;
+  while (n > 1) {
+    n = f(n); 
+    len++;
+  }
+  return len;
+}
+
+function computeAll(n){ 
+  var seq = ""; //n terms of the Collatz sequence
+  var max = 0; //maximum of sequence
+  for (var i = 1; i <= n; i++) {
+    collageNumber = t(i);
+	seq = seq + collageNumber + " ";
+    if (collageNumber > max) max = collageNumber;
+  }
+  document.getElementById("colseq").innerHTML = seq;
+  document.getElementById("maxseq").innerHTML = max;
+
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.canvas.width  = window.innerWidth - 50;
+  ctx.canvas.height = window.innerHeight - 300;
+  ctx.clearRect(0, 0, c.width, c.height);
+  
+  //axis values
+  ctx.font = "12px Arial";
+  ctx.strokeText("(0,0)", 0, c.height-1);
+  ctx.strokeText(max, 0, 12);
+  ctx.strokeText(n, c.width-20, c.height-1);
+  
+  ctx.fillStyle="#FF0000" //for fillRect
+  var xscale = c.width / n;
+  var yscale = c.height / max;  
+  var dot = 3; //rectangle size
+  if (n > 999) dot = 2;
+  if (n > 9999) dot = 1;  
+  for (i = 1; i <= n; i++)
+	ctx.fillRect(i*xscale, c.height-t(i)*yscale, dot, dot);
+  
+}
+
+</script>
+  
+</body>
+</html>
+>>>>>>> 68c045f90c99c7fcf322c24e766b5cd6d0c83de6
